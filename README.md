@@ -11,13 +11,13 @@ and then change it as you like. This is how it look like:
 ```bash
 @echo on
 call activate base
-python ..\Read_Binary_CLN_v1_git.py
+python ..\Pump2GWV.py
 pause
 ```
 I use `call activate base` in order to activate the conda environment where I have those libraries.\
 Finally you can run the script with your favorite text editor like VSCode or Spyder if you like.
 ## Capabilities
-You can easily create `.csv file` that can be read by Groundwater Vistas as an input for the pumps.\
+You can easily create `.csv file` that can be read by Groundwater Vistas as an input for the pumps.
 ## Disclaimer
 This version only creates outputs with the fields (like Numtrans, Layer_Top, etc)  that exist in the script.\
 You can change that if you like and easely adapt it.\
