@@ -13,7 +13,7 @@ from tqdm import tqdm
 import time
 t = time.time()
 
-#--------------Presentación-------------------------------
+#--------------Presentation-------------------------------
 presentacion='Developed by Sebastián V. G.\nPumping2GWV Script v1'
 print(presentacion)
 
@@ -23,12 +23,12 @@ Ruta = os.getcwd() + '\\'
 nombre_archivo='CaudalToGWV'
 directory =  Ruta + nombre_archivo + '.xlsx'
 
-#--------------Nombre archivo de guardado------------
+#--------------Name of the save file------------
 #archivo_guardado=input('Nombre del archivo de guardado: ')
 archivo_guardado='PumpOut_2GWV'
 #-----------Read_Excel---------------------
-pump=pd.read_excel(directory,'Caudal',names=[0,1,2]) #los números representan las columnas de la hoja excel
-aux=pd.read_excel(directory,'Info_Pozos',names=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14]) #los números representan las columnas de la hoja excel
+pump=pd.read_excel(directory,'Caudal',names=[0,1,2]) #Numbers represent the columns in the excel sheet
+aux=pd.read_excel(directory,'Info_Pozos',names=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14]) #Numbers represent the columns in the excel sheet
 
 #------------------Generate_Dictionary-------------------------------
 dic={}
@@ -36,16 +36,16 @@ for i in pump[0].unique():
     dic[i] = [(pump[2][j], round(pump[1][j],3)) for j in pump[pump[0]==i].index]
 #dic=dict(sorted(dic.items(), key = lambda kv:(kv[1], kv[0]))) 
 for well in dic:
-    dic[well]=sorted(dic[well]) # Para ordenar la data en caso de que este desordenada
+    dic[well]=sorted(dic[well]) # To sort date if it is messy
 
 #---------------------Create_New_Dataframe----------------------
 df=pd.DataFrame(columns=['Pozo', 'Este', 'Norte', 'Layer_Top','Layer_Bot', 'NumTrans','Rw', 'LossType','PumpLoc','Zpump','Skin','Kskin',
                          'Qlimit','PumpLevel','Reach'])
 
 #----------------------Read Wells and check data----------------
-indice1=0 #sera el que vea el i como número para recorrer el arcivho auxiliar
-indice2=1 #sera el variable para ir pegando los datos
-acum=0  #acumulación de indice
+indice1=0 #This will be the index that travel along the file
+indice2=1 #This will be the copy index
+acum=0  #This will be the accumulation of the index
 '''
 Nota del archivo de caudales
 Se ocupa el incide j para recorrer cada uno de los periodos de stress.
@@ -56,9 +56,9 @@ la dimensión de los datos de caudal.
 '''
 
 for i in tqdm(aux[0]): #locate all wells
-    lst=[] #list auxiliar para saber si encuentra o no el periodo de stress
-    num_aux=0 #será el índice de los datos presentes en cada pozo
-    num=aux[5][indice1] #numero de datos, en este caso NumTrans
+    lst=[] #list auxiliar to know if it finds or not the stress period
+    num_aux=0 #This will be the index of data that is in each well
+    num=aux[5][indice1] #Number of data, in this case it is NumTrans
     df.loc[acum,'Pozo']=i
     df.loc[acum,'Este']=aux[1][indice1]
     df.loc[acum,'Norte']=aux[2][indice1]
@@ -93,7 +93,7 @@ for i in tqdm(aux[0]): #locate all wells
     indice1+=1
     acum=indice2+1
     indice2=acum+1
-#---------------save csv-------------------------------
+#---------------save to csv-------------------------------
 #df.to_csv(archivo_guardado+'.csv',sep='\t',index=False)
 df.to_csv(archivo_guardado+'.csv',index=False) #aquí se guardará como csv
 
