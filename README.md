@@ -1,5 +1,5 @@
 # Pump2GWV
-This is a python script that creates a properly formatted .csv file for pumps in Groundwater Vistas
+This is a python script that creates a properly formatted `.csv or .txt` file for pumps in Groundwater Vistas
 ## Required packages
 **pandas version:** `1.2.3 or later`\
 **tqdm version:** `4.49.0 or later`\
@@ -17,11 +17,11 @@ pause
 I use `call activate base` in order to activate the conda environment where I have those libraries.\
 Finally you can run the script with your favorite text editor like VSCode or Spyder if you like.
 ## Capabilities
-You can easily create `.csv file` that can be read by Groundwater Vistas as an input for the pumps.
+You can easily create `.csv or .txt file` that can be read by Groundwater Vistas as an input for the `Analytical Element Wells`.
 ## Disclaimer
-This version only creates outputs with the fields (like Numtrans, Layer_Top, etc)  that exist in the script.\
+This version only creates outputs with the fields that exist in the script (like Numtrans, Layer_Top, etc).\
 You can change that if you like and easely adapt it.\
-This is the first version and I will improve the capabilities of it in order to make it easy to control it.
+This is the first version and I will improve the capabilities of it in order to make it easy to use it.
 ## Contact
 Please if you want to improve the code feel free to contact me or make a pull request.\
 email: `sebastian.vazquez@ug.uchile.cl`\
